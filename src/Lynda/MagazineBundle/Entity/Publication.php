@@ -3,6 +3,7 @@
 namespace Lynda\MagazineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Publication
@@ -12,6 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Publication
 {
+    /**
+     *
+     * @var ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="Issue", mappedBy="publication")
+     */
+    private $issues;
+    
     /**
      * @var integer
      *
@@ -28,7 +37,10 @@ class Publication
      */
     private $name;
 
-
+    public function __construct() {
+        $this->issues = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *

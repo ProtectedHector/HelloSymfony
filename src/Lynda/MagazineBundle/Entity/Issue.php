@@ -13,6 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
 class Issue
 {
     /**
+     * @var Publication
+     * 
+     * @ORM\ManyToOne(targetEntity="Publication", inversedBy="issues")
+     * @ORM\JoinColumn(name="publication_id", referencedColumnName="id") 
+     */
+    private $publication;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
