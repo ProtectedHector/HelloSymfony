@@ -129,4 +129,27 @@ class Issue
     {
         return $this->cover;
     }
+
+    /**
+     * Set publication
+     *
+     * @param \Lynda\MagazineBundle\Entity\Publication $publication
+     * @return Issue
+     */
+    public function setPublication(\Lynda\MagazineBundle\Entity\Publication $publication = null)
+    {
+        $this->publication = $publication;
+
+        return $this;
+    }
+
+    /**
+     * Get publication
+     *
+     * @return \Lynda\MagazineBundle\Entity\Publication 
+     */
+    public function getPublication()
+    {
+        return $this->publication;
+    }
 }

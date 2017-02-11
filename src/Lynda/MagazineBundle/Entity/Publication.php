@@ -14,7 +14,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Publication
 {
     /**
-     *
      * @var ArrayCollection
      * 
      * @ORM\OneToMany(targetEntity="Issue", mappedBy="publication")
@@ -72,5 +71,47 @@ class Publication
     public function getName()
     {
         return $this->name;
+    }
+    
+    /**
+     * Render a Publication as a string
+     * 
+     * @return string
+     */
+    public function __toString() {
+        return $this->getName();
+    }
+
+    /**
+     * Add issues
+     *
+     * @param \Lynda\MagazineBundle\Entity\Issue $issues
+     * @return Publication
+     */
+    public function addIssue(\Lynda\MagazineBundle\Entity\Issue $issues)
+    {
+        $this->issues[] = $issues;
+
+        return $this;
+    }
+
+    /**
+     * Remove issues
+     *
+     * @param \Lynda\MagazineBundle\Entity\Issue $issues
+     */
+    public function removeIssue(\Lynda\MagazineBundle\Entity\Issue $issues)
+    {
+        $this->issues->removeElement($issues);
+    }
+
+    /**
+     * Get issues
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIssues()
+    {
+        return $this->issues;
     }
 }
