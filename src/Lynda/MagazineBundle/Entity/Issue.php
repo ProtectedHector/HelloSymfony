@@ -3,6 +3,7 @@
 namespace Lynda\MagazineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Issue
@@ -33,6 +34,7 @@ class Issue
      * @var integer
      *
      * @ORM\Column(name="number", type="integer")
+     * @Assert\Range(min = 1, minMessage = "You'll need to specify Issue 1 or higher.")
      */
     private $number;
 
@@ -46,7 +48,7 @@ class Issue
     /**
      * @var string
      *
-     * @ORM\Column(name="cover", type="string", length=255)
+     * @ORM\Column(name="cover", type="string", length=255, nullable=true)
      */
     private $cover;
 
